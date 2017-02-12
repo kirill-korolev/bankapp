@@ -14,9 +14,16 @@ class HomeTableView: UITableView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = tableViewDelegate
-        self.dataSource = tableViewDelegate
+        NotificationCenter.default.addObserver(self, selector: #selector(initDrawing(_:)), name: .CardsHaveBeenLoadedNotification, object: nil)
         self.tableFooterView = UIView(frame: CGRect.zero)
     }
+    
+    func initDrawing(_ sender: Any?){
+        self.delegate = tableViewDelegate
+        self.dataSource = tableViewDelegate
+        self.reloadData()
+    }
+    
+    
 
 }

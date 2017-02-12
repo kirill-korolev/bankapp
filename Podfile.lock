@@ -1,0 +1,12 @@
+PODS:
+  - SmileLock (2.0.0)
+
+DEPENDENCIES:
+  - SmileLock
+
+SPEC CHECKSUMS:
+  SmileLock: ee34bf37e824c8afc71217fccc2b2bee5510db64
+
+PODFILE CHECKSUM: 9db3ce2eb6604d95817e2bcceee662207f9419d4
+
+COCOAPODS: 1.2.0

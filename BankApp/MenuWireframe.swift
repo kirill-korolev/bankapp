@@ -37,11 +37,19 @@ class MenuWireframe: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
+    let coefficient: CGFloat = 0.5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Default menu size
-        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width/3*2
+        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width*coefficient
+    }
+ 
+    
+    //Invoke this method after changing the device orientation
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.revealViewController().rearViewRevealWidth = size.width*coefficient
     }
     
 }
@@ -51,7 +59,8 @@ class MenuWireframe: UIViewController {
 class MenuViewDelegate: NSObject, UITableViewDelegate
 {
     var parentController: UITableViewController?
-    let selectedBGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.1)
+    let defaultBGColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+    let selectedBGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.7)
     var selectedID: IndexPath?
     
     func updateCellsInTableView(tableView: UITableView)
@@ -62,7 +71,7 @@ class MenuViewDelegate: NSObject, UITableViewDelegate
         {
             let indexPath = IndexPath(row: i, section: 0)
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.backgroundColor = UIColor.clear
+            cell?.contentView.backgroundColor = defaultBGColor
         }
         
         selectedID = nil
@@ -77,7 +86,7 @@ class MenuViewDelegate: NSObject, UITableViewDelegate
         {
             if indexPath.row == 0
             {
-                cell.backgroundColor = selectedBGColor
+                cell.contentView.backgroundColor = selectedBGColor
             }
         }
     }
@@ -93,14 +102,14 @@ class MenuViewDelegate: NSObject, UITableViewDelegate
             let activeCell = tableView.cellForRow(at: selectedID!)
             
             if selectedID != indexPath{
-                activeCell?.backgroundColor = UIColor.clear
-                cell?.backgroundColor = selectedBGColor
+                activeCell?.contentView.backgroundColor = defaultBGColor
+                cell?.contentView.backgroundColor = selectedBGColor
             }
         }
         else{
             let initialStateCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0))
-            initialStateCell?.backgroundColor = UIColor.clear
-            cell?.backgroundColor = selectedBGColor
+            initialStateCell?.contentView.backgroundColor = defaultBGColor
+            cell?.contentView.backgroundColor = selectedBGColor
         }
         
         selectedID = indexPath

@@ -8,13 +8,28 @@
 
 import UIKit
 
-class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
+class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, HomeTableDataDelegate {
     
     let tableData = HomeTableData.instance
+    var cards: [Card]!
     
     //Constants
     let headerHeight: CGFloat = 45.0
     
+    
+    
+    override init() {
+        super.init()
+        tableData.delegate = self
+        cards = []
+    }
+    
+    //MARK: - HomeTableDataDelegate
+    
+    func cardsDidLoad(cards: NSArray){
+        self.cards = cards as! [Card]
+        NotificationCenter.default.post(name: .CardsHaveBeenLoadedNotification, object: nil)
+    }
     
     //MARK: - UITableViewDataSource
     
@@ -42,11 +57,21 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section{
+        case 0:
+            return cards.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let row = indexPath.row
+        
+        cell.textLabel?.text = cards[row].title
+        
+        return cell
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1823B9BDE59B5E817A22D9EA /* Pods_BankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9249106027956203E50BBDF5 /* Pods_BankApp.framework */; };
 		ED2973D61E48D958000C6E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2973D51E48D958000C6E39 /* AppDelegate.swift */; };
 		ED2973DB1E48D958000C6E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2973D91E48D958000C6E39 /* Main.storyboard */; };
 		ED2973DE1E48D958000C6E39 /* BankApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED2973DC1E48D958000C6E39 /* BankApp.xcdatamodeld */; };
@@ -21,6 +22,11 @@
 		ED2973FD1E49DC74000C6E39 /* PaymentsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2973FC1E49DC74000C6E39 /* PaymentsWireframe.swift */; };
 		ED2974001E49FFEF000C6E39 /* FrontViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2973FF1E49FFEF000C6E39 /* FrontViewRouter.swift */; };
 		ED2974021E49FFFB000C6E39 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2974011E49FFFB000C6E39 /* HomeRouter.swift */; };
+		ED38BD691E4E4F4B00A12BE5 /* PassCodeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38BD681E4E4F4B00A12BE5 /* PassCodeWireframe.swift */; };
+		ED38BD6C1E4F6B1000A12BE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38BD6B1E4F6B1000A12BE5 /* User.swift */; };
+		ED38BD6E1E4F6BB300A12BE5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38BD6D1E4F6BB300A12BE5 /* UserManager.swift */; };
+		ED38BD701E4F751400A12BE5 /* AuthWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38BD6F1E4F751400A12BE5 /* AuthWireframe.swift */; };
+		ED39A81D1E4E2A4A00742C2B /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED39A81C1E4E2A4A00742C2B /* AuthTextField.swift */; };
 		ED6006D11E4A19F100B5E096 /* HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6006D01E4A19F100B5E096 /* HistoryRouter.swift */; };
 		ED6006D31E4A1A2600B5E096 /* PaymentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6006D21E4A1A2600B5E096 /* PaymentsRouter.swift */; };
 		ED6006D81E4A723100B5E096 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6006D71E4A723100B5E096 /* TableViewDelegate.swift */; };
@@ -28,12 +34,15 @@
 		ED6006DC1E4A758500B5E096 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6006DB1E4A758500B5E096 /* HomeTableView.swift */; };
 		ED6006DE1E4AF6A400B5E096 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6006DD1E4AF6A400B5E096 /* Card.swift */; };
 		ED71070C1E4B8C8900B7738F /* MenuContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71070B1E4B8C8900B7738F /* MenuContainer.swift */; };
-		ED71070F1E4B932F00B7738F /* CodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71070E1E4B932F00B7738F /* CodeButton.swift */; };
+		ED71070F1E4B932F00B7738F /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71070E1E4B932F00B7738F /* SignInButton.swift */; };
 		ED9F6FCE1E4B475100A5C3C3 /* ProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */; };
 		ED9F6FD01E4B478100A5C3C3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9249106027956203E50BBDF5 /* Pods_BankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90EEC47E90EDC1382F73C4C /* Pods-BankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankApp/Pods-BankApp.release.xcconfig"; sourceTree = "<group>"; };
+		E1970877929E2E7BCF3FB4FF /* Pods-BankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankApp/Pods-BankApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED2973D21E48D958000C6E39 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2973D51E48D958000C6E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED2973DA1E48D958000C6E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +61,11 @@
 		ED2973FC1E49DC74000C6E39 /* PaymentsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsWireframe.swift; sourceTree = "<group>"; };
 		ED2973FF1E49FFEF000C6E39 /* FrontViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontViewRouter.swift; sourceTree = "<group>"; };
 		ED2974011E49FFFB000C6E39 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		ED38BD681E4E4F4B00A12BE5 /* PassCodeWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCodeWireframe.swift; sourceTree = "<group>"; };
+		ED38BD6B1E4F6B1000A12BE5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ED38BD6D1E4F6BB300A12BE5 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		ED38BD6F1E4F751400A12BE5 /* AuthWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWireframe.swift; sourceTree = "<group>"; };
+		ED39A81C1E4E2A4A00742C2B /* AuthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		ED6006D01E4A19F100B5E096 /* HistoryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryRouter.swift; sourceTree = "<group>"; };
 		ED6006D21E4A1A2600B5E096 /* PaymentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsRouter.swift; sourceTree = "<group>"; };
 		ED6006D71E4A723100B5E096 /* TableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +73,7 @@
 		ED6006DB1E4A758500B5E096 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		ED6006DD1E4AF6A400B5E096 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		ED71070B1E4B8C8900B7738F /* MenuContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContainer.swift; sourceTree = "<group>"; };
-		ED71070E1E4B932F00B7738F /* CodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeButton.swift; sourceTree = "<group>"; };
+		ED71070E1E4B932F00B7738F /* SignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileWireframe.swift; sourceTree = "<group>"; };
 		ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,17 +83,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1823B9BDE59B5E817A22D9EA /* Pods_BankApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		618A0E2E95C82ACBCC583A05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1970877929E2E7BCF3FB4FF /* Pods-BankApp.debug.xcconfig */,
+				D90EEC47E90EDC1382F73C4C /* Pods-BankApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C75BF7EAD3CEC3966BA15087 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9249106027956203E50BBDF5 /* Pods_BankApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED2973C91E48D958000C6E39 = {
 			isa = PBXGroup;
 			children = (
 				ED2973D41E48D958000C6E39 /* BankApp */,
 				ED2973D31E48D958000C6E39 /* Products */,
+				618A0E2E95C82ACBCC583A05 /* Pods */,
+				C75BF7EAD3CEC3966BA15087 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,14 +134,14 @@
 				ED2973EE1E48DD82000C6E39 /* SWRevealViewController */,
 				ED2973EF1E48DE71000C6E39 /* Storyboard */,
 				ED6006D61E4A1AE800B5E096 /* Core Data */,
+				ED38BD671E4E4EE700A12BE5 /* PassLock Module */,
 				ED71070D1E4B92AF00B7738F /* Auth Module */,
 				ED2973FE1E49DC7C000C6E39 /* Menu Module */,
 				ED2974031E4A0004000C6E39 /* Home Module */,
 				ED6006D51E4A1AC900B5E096 /* Payments Module */,
 				ED6006D41E4A1ABC00B5E096 /* History Module */,
+				ED38BD6A1E4E669300A12BE5 /* Profile Module */,
 				ED6006CF1E4A19B000B5E096 /* Router Protocol */,
-				ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */,
-				ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */,
 			);
 			path = BankApp;
 			sourceTree = "<group>";
@@ -155,6 +189,23 @@
 			name = "Home Module";
 			sourceTree = "<group>";
 		};
+		ED38BD671E4E4EE700A12BE5 /* PassLock Module */ = {
+			isa = PBXGroup;
+			children = (
+				ED38BD681E4E4F4B00A12BE5 /* PassCodeWireframe.swift */,
+			);
+			name = "PassLock Module";
+			sourceTree = "<group>";
+		};
+		ED38BD6A1E4E669300A12BE5 /* Profile Module */ = {
+			isa = PBXGroup;
+			children = (
+				ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */,
+				ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */,
+			);
+			name = "Profile Module";
+			sourceTree = "<group>";
+		};
 		ED6006CF1E4A19B000B5E096 /* Router Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +243,11 @@
 		ED71070D1E4B92AF00B7738F /* Auth Module */ = {
 			isa = PBXGroup;
 			children = (
-				ED71070E1E4B932F00B7738F /* CodeButton.swift */,
+				ED71070E1E4B932F00B7738F /* SignInButton.swift */,
+				ED39A81C1E4E2A4A00742C2B /* AuthTextField.swift */,
+				ED38BD6B1E4F6B1000A12BE5 /* User.swift */,
+				ED38BD6D1E4F6BB300A12BE5 /* UserManager.swift */,
+				ED38BD6F1E4F751400A12BE5 /* AuthWireframe.swift */,
 			);
 			name = "Auth Module";
 			sourceTree = "<group>";
@@ -204,9 +259,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED2973E71E48D958000C6E39 /* Build configuration list for PBXNativeTarget "BankApp" */;
 			buildPhases = (
+				C29B09266DF89B956CCA28F6 /* [CP] Check Pods Manifest.lock */,
 				ED2973CE1E48D958000C6E39 /* Sources */,
 				ED2973CF1E48D958000C6E39 /* Frameworks */,
 				ED2973D01E48D958000C6E39 /* Resources */,
+				FA167D7DBBAE58B333FBE697 /* [CP] Embed Pods Frameworks */,
+				ED511F558F3196EAAAE0AAF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +324,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C29B09266DF89B956CCA28F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED511F558F3196EAAAE0AAF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BankApp/Pods-BankApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA167D7DBBAE58B333FBE697 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BankApp/Pods-BankApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED2973CE1E48D958000C6E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,6 +379,7 @@
 			files = (
 				ED9F6FD01E4B478100A5C3C3 /* ProfileRouter.swift in Sources */,
 				ED6006D81E4A723100B5E096 /* TableViewDelegate.swift in Sources */,
+				ED38BD6C1E4F6B1000A12BE5 /* User.swift in Sources */,
 				ED2973DE1E48D958000C6E39 /* BankApp.xcdatamodeld in Sources */,
 				ED6006D11E4A19F100B5E096 /* HistoryRouter.swift in Sources */,
 				ED2973D61E48D958000C6E39 /* AppDelegate.swift in Sources */,
@@ -281,17 +388,21 @@
 				ED6006DE1E4AF6A400B5E096 /* Card.swift in Sources */,
 				ED2973FD1E49DC74000C6E39 /* PaymentsWireframe.swift in Sources */,
 				ED2973ED1E48DD7B000C6E39 /* SWRevealViewController.m in Sources */,
+				ED38BD701E4F751400A12BE5 /* AuthWireframe.swift in Sources */,
 				ED71070C1E4B8C8900B7738F /* MenuContainer.swift in Sources */,
 				ED2973F11E48E0E2000C6E39 /* MenuWireframe.swift in Sources */,
-				ED71070F1E4B932F00B7738F /* CodeButton.swift in Sources */,
+				ED71070F1E4B932F00B7738F /* SignInButton.swift in Sources */,
 				ED6006D31E4A1A2600B5E096 /* PaymentsRouter.swift in Sources */,
+				ED38BD6E1E4F6BB300A12BE5 /* UserManager.swift in Sources */,
 				ED6006DC1E4A758500B5E096 /* HomeTableView.swift in Sources */,
 				ED9F6FCE1E4B475100A5C3C3 /* ProfileWireframe.swift in Sources */,
 				ED2973FB1E49DC67000C6E39 /* HistoryWireframe.swift in Sources */,
+				ED38BD691E4E4F4B00A12BE5 /* PassCodeWireframe.swift in Sources */,
 				ED6006DA1E4A735400B5E096 /* HomeTableData.swift in Sources */,
 				ED2973F91E491113000C6E39 /* BottomMenuViewController.swift in Sources */,
 				ED2973F71E491104000C6E39 /* TopMenuViewController.swift in Sources */,
 				ED2974021E49FFFB000C6E39 /* HomeRouter.swift in Sources */,
+				ED39A81D1E4E2A4A00742C2B /* AuthTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,12 +523,13 @@
 		};
 		ED2973E81E48D958000C6E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1970877929E2E7BCF3FB4FF /* Pods-BankApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AW37662HE7;
 				INFOPLIST_FILE = BankApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kirillkorolev.BankApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,12 +541,13 @@
 		};
 		ED2973E91E48D958000C6E39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D90EEC47E90EDC1382F73C4C /* Pods-BankApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AW37662HE7;
 				INFOPLIST_FILE = BankApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kirillkorolev.BankApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

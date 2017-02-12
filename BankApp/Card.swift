@@ -24,17 +24,17 @@ extension String{
     }
 }
 
-enum CardType:String
+enum CardType:Int
 {
-    case credit = "Кредитная"
-    case debit = "Дебетовая"
-    case overdraft = "Овердрафтная"
+    case credit = 0
+    case debit = 1
+    case overdraft = 2
 }
 
-enum CardProducer:String
+enum CardProducer:Int
 {
-    case visa = "Visa"
-    case mastercard = "Mastercard"
+    case visa = 0
+    case mastercard = 1
 }
 
 struct CardInfo

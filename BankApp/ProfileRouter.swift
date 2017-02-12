@@ -12,8 +12,13 @@ class ProfileRouter: FrontViewRouter {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
     }
 
+    func updateViewWithData(user: User)
+    {
+        self.navigationBar.topItem!.title = user.fullname
+    }
+    
+    
 }

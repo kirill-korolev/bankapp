@@ -9,10 +9,16 @@
 import UIKit
 
 class ProfileWireframe: UIViewController {
-
+    
+    var navController: ProfileRouter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addGestureToScene()
+        
+        let user = UserDefaults.standard.loadObjectWithKey(key: "user") as! User
+        navController = self.navigationController as! ProfileRouter
+        navController.updateViewWithData(user: user)
     }
 
 

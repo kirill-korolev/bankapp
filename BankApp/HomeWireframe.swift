@@ -8,9 +8,22 @@
 
 import UIKit
 
+extension Notification.Name{
+    static let CardsHaveBeenLoadedNotification = Notification.Name("CardsHaveBeenLoadedNotification")
+}
+
+
 class HomeWireframe: UIViewController {
     
     @IBOutlet weak var tableView: HomeTableView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        let user = UserDefaults.standard.loadObjectWithKey(key: "user") as! User
+        HomeTableData.instance.loadCards(id: user.id)
+        print("USER ID: \(user.id)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
