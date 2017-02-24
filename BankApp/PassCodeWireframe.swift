@@ -8,6 +8,7 @@
 
 import UIKit
 import SmileLock
+import JSSAlertView
 
 class PassCodeWireframe: UIViewController {
 
@@ -52,26 +53,49 @@ extension PassCodeWireframe: PasswordInputCompleteProtocol
         
         if isInitial != true {
             
-            if user.code == input
+            if user.code != input
             {
-                print("proceed")
-            }
-            else{
+                showAlert(success: false)
                 passwordContainerView.clearInput()
                 return
             }
             
+            performSegueOnThread()
+            
         }
         else{
+            
+            showAlert(success: true)
+            
             user.code = input
             UserDefaults.standard.saveObject(object: user, key: "user")
         }
-        
+
+    }
+    
+    func performSegueOnThread(){
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "mainScreenSegue", sender: self)
         }
-
     }
+    
+    //MARK: - Alert Views
+    
+    func showAlert(success: Bool){
+        if success{
+            let alertView = JSSAlertView().show(self, title: "Последний штрих", text: "Ваш пароль был успешно сохранен!", noButtons: false, buttonText: "Отлично", cancelButtonText: nil, color: #colorLiteral(red: 0.4334578514, green: 0.7840958238, blue: 0.3812353313, alpha: 1), iconImage: nil, delay: nil, timeLeft: nil)
+            
+            alertView.addAction(performSegueOnThread)
+            alertView.setTextTheme(.light)
+        }
+        else{
+            let alertView = JSSAlertView().show(self, title: "Что-то пошло не так", text: "Вы ввели неверный пароль", noButtons: false, buttonText: "ОК", cancelButtonText: nil, color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), iconImage: nil, delay: nil, timeLeft: nil)
+            
+            alertView.setTextTheme(.light)
+        }
+    }
+    
+    //TODO: - touchAuthenticationComplete
     
     func touchAuthenticationComplete(_ passwordContainerView: PasswordContainerView, success: Bool, error: NSError?) {
         

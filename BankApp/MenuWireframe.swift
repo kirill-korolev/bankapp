@@ -37,19 +37,19 @@ class MenuWireframe: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
-    let coefficient: CGFloat = 0.5
+    let constant: CGFloat = 300.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Default menu size
-        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width*coefficient
+        self.revealViewController().rearViewRevealWidth = constant
     }
  
     
     //Invoke this method after changing the device orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.revealViewController().rearViewRevealWidth = size.width*coefficient
+        self.revealViewController().rearViewRevealWidth = constant
     }
     
 }

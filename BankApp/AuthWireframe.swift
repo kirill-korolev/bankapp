@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JSSAlertView
 
 struct QueryError: OptionSet
 {
@@ -51,7 +52,7 @@ class AuthWireframe: UIViewController, UserDelegate {
         }
         else if error.contains(.emailField) || error.contains(.passField)
         {
-            
+            showError(title: "Ошибка", text: "Вы не ввели необходимые данные!")
         }
 
         
@@ -75,6 +76,13 @@ class AuthWireframe: UIViewController, UserDelegate {
         return temp
     }
     
+    //MARK: - AlertViews
+    
+    func showError(title: String, text: String){
+        let alertView = JSSAlertView().show(self, title: title, text: text, noButtons: false, buttonText: "ОК", cancelButtonText: nil, color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), iconImage: nil, delay: nil, timeLeft: nil)
+        alertView.setTextTheme(.light)
+    }
+    
     
     //MARK: UserDelegate
     
@@ -90,7 +98,12 @@ class AuthWireframe: UIViewController, UserDelegate {
                 self.performSegue(withIdentifier: "passCodeSegue", sender: self)
             }
         }
-        
+    }
+    
+    func didFinishWithError(connection: Bool){
+        if !connection{
+            showError(title: "Ошибка", text: "Отсутствует соединение с сервером!")
+        }
     }
     
 }

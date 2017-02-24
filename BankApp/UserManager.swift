@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import JSSAlertView
 
 public protocol UserDelegate: class
 {
     func usersDownloaded(users: NSArray)
+    func didFinishWithError(connection: Bool)
 }
 
 class UserManager: NSObject, URLSessionDataDelegate {
@@ -46,7 +48,7 @@ class UserManager: NSObject, URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
         if error != nil {
-            print("Failed to download data")
+            self.delegate.didFinishWithError(connection: false)
             return
         }
         
@@ -88,7 +90,6 @@ class UserManager: NSObject, URLSessionDataDelegate {
         
         
     }
-    
     
     
 }

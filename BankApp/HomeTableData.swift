@@ -21,6 +21,7 @@ class HomeTableData:NSObject, URLSessionDataDelegate
     weak var delegate: HomeTableDataDelegate!
     var data: NSMutableData!
     var urlPath:String!
+
     
     func loadCards(id: Int)
     {
@@ -33,6 +34,7 @@ class HomeTableData:NSObject, URLSessionDataDelegate
         session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         let task = session.dataTask(with: url)
         task.resume()
+        
     }
     
     //MARK: URLSessionDataDelegate
@@ -73,9 +75,10 @@ class HomeTableData:NSObject, URLSessionDataDelegate
             let type = jsonDictionary["type"] as! String
             let number = jsonDictionary["number"] as! String
             let cvv = jsonDictionary["cvv"] as! String
+            let balance = jsonDictionary["balance"] as! String
             
             let cardInfo = CardInfo(type: CardType(rawValue: Int(type)!)!, title: CardProducer(rawValue:Int(producer)!)!, number: number, cvv: Int(cvv)!)
-            let card = Card(title: title, info: cardInfo)
+            let card = Card(title: title, info: cardInfo, balance: Int(balance)!)
             cards.add(card)
             
         }

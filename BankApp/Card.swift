@@ -35,6 +35,7 @@ enum CardProducer:Int
 {
     case visa = 0
     case mastercard = 1
+    case maestro = 2
 }
 
 struct CardInfo
@@ -49,10 +50,12 @@ class Card{
     
     let title: String
     let info: CardInfo
+    let balance: Int
     
-    init(title: String, info: CardInfo) {
+    init(title: String, info: CardInfo, balance: Int) {
         self.title = title
         self.info = info
+        self.balance = balance
     }
     
 }

@@ -8,11 +8,20 @@
 
 import UIKit
 
-class PaymentsWireframe: UIViewController {
+class PaymentsWireframe: UIViewController, EventReceiverProtocol {
 
+    @IBOutlet weak var tableView: PaymentsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addGestureToScene()
+        tableView.parent = self
     }
-
+    
+    //MARK: EventReceiverProtocol
+    
+    func initSegueFromSubview(data: Any?, segue: SegueID) {
+        self.performSegue(withIdentifier: segue.rawValue, sender: data)
+    }
+    
 }

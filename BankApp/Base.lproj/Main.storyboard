@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +46,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-mq-Kpt" customClass="SignInButton" customModule="BankApp" customModuleProvider="target">
                                 <rect key="frame" x="58" y="403" width="259" height="50"/>
-                                <color key="backgroundColor" red="0.37077372209999998" green="0.75378605769999996" blue="0.30508501389999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.37252957738376069" green="0.75378605769999996" blue="0.30915252370868213" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Udr-mq-Kpt" secondAttribute="height" multiplier="259:50" id="3ME-Nx-jcN"/>
                                     <constraint firstAttribute="height" constant="50" id="5aV-bI-1Ap"/>
@@ -200,14 +201,35 @@
                             <constraint firstItem="Icu-T5-xnz" firstAttribute="centerX" secondItem="Yjd-gs-AqL" secondAttribute="centerX" id="kFU-MF-aG9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Главная" id="pMZ-4C-6Vg"/>
+                    <navigationItem key="navigationItem" title="Главная" id="pMZ-4C-6Vg">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Mg9-fb-kP9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Icu-T5-xnz" id="w0V-Un-gdV"/>
+                        <segue destination="sCn-hD-Jtu" kind="show" identifier="cardDescriptionSegue" id="pvY-aB-uZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYF-x8-l7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124" y="1626.8365817091455"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="e7O-qO-Wmy">
+            <objects>
+                <viewController id="sCn-hD-Jtu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TqZ-tm-dZr"/>
+                        <viewControllerLayoutGuide type="bottom" id="9t9-qz-mu2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhg-5y-YR4">
+                        <rect key="frame" x="0.0" y="64" width="384" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XYQ-nw-DF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-434" y="2403"/>
         </scene>
         <!--Платежи-->
         <scene sceneID="x78-E6-tMg">
@@ -220,13 +242,98 @@
                     <view key="view" contentMode="scaleToFill" id="cC4-Af-NXG">
                         <rect key="frame" x="0.0" y="64" width="384" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-Pg-7mi" customClass="PaymentsView" customModule="BankApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PaymentsCell" id="brt-v3-SP3" customClass="PaymentsCell" customModule="BankApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="384" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="brt-v3-SP3" id="PGf-2X-rtK">
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjU-ly-CP8">
+                                                    <rect key="frame" x="17" y="11" width="311" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Pii-wS-Con"/>
+                                                        <constraint firstAttribute="width" constant="311" id="exP-Gp-5Xa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.25490197539999998" green="0.27450981740000002" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JjU-ly-CP8" firstAttribute="leading" secondItem="PGf-2X-rtK" secondAttribute="leadingMargin" constant="9" id="5eb-5j-6ac"/>
+                                                <constraint firstItem="JjU-ly-CP8" firstAttribute="centerY" secondItem="PGf-2X-rtK" secondAttribute="centerY" id="WoL-wu-5h5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="label" destination="JjU-ly-CP8" id="w74-9k-mik"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RlN-Pg-7mi" firstAttribute="centerX" secondItem="cC4-Af-NXG" secondAttribute="centerX" id="DMp-3R-4vY"/>
+                            <constraint firstItem="RlN-Pg-7mi" firstAttribute="width" secondItem="cC4-Af-NXG" secondAttribute="width" id="tC5-SZ-0OO"/>
+                            <constraint firstItem="RlN-Pg-7mi" firstAttribute="height" secondItem="cC4-Af-NXG" secondAttribute="height" id="xPi-Gl-fBu"/>
+                            <constraint firstItem="RlN-Pg-7mi" firstAttribute="centerY" secondItem="cC4-Af-NXG" secondAttribute="centerY" id="y5b-FV-d2r"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Платежи" id="iDa-gJ-MaK"/>
+                    <navigationItem key="navigationItem" title="Платежи" id="iDa-gJ-MaK">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7Fq-9C-pmO"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="RlN-Pg-7mi" id="YCv-lx-4KS"/>
+                        <segue destination="vfq-WZ-xhx" kind="show" identifier="transferSegue" id="QxZ-EG-Jbo"/>
+                        <segue destination="bRU-Ry-lYd" kind="show" identifier="paymentSegue" id="QLx-jl-MQx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8b9-Gr-LjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="1653"/>
+            <point key="canvasLocation" x="940.79999999999995" y="1652.9235382308848"/>
+        </scene>
+        <!--Transfer Wireframe-->
+        <scene sceneID="sxl-rU-49P">
+            <objects>
+                <viewController id="vfq-WZ-xhx" customClass="TransferWireframe" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VUQ-16-2Ry"/>
+                        <viewControllerLayoutGuide type="bottom" id="5oV-Na-Ejk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dEj-pk-ofZ">
+                        <rect key="frame" x="0.0" y="64" width="384" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rya-Pf-U1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="649" y="2391"/>
+        </scene>
+        <!--Payment Wireframe-->
+        <scene sceneID="zeG-I1-DdW">
+            <objects>
+                <viewController id="bRU-Ry-lYd" customClass="PaymentWireframe" customModule="BankApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EeL-2D-GBi"/>
+                        <viewControllerLayoutGuide type="bottom" id="BTc-1N-5Ml"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DOU-qo-ieu">
+                        <rect key="frame" x="0.0" y="64" width="384" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQB-Hs-Xnt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="2391"/>
         </scene>
         <!--Menu Wireframe-->
         <scene sceneID="VeL-3R-kkh">
@@ -507,7 +614,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="384" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="6aU-IR-JSD" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="6aU-IR-JSD" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.37077372213818105" green="0.75378605769230766" blue="0.30508501387581255" alpha="1" colorSpace="calibratedRGB"/>
@@ -531,7 +638,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="384" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hEr-mJ-uYr" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="hEr-mJ-uYr" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.37077372209999998" green="0.75378605769999996" blue="0.30508501389999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -574,7 +681,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="384" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hUu-uL-p6E" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="hUu-uL-p6E" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.37252957738376069" green="0.75378605769999996" blue="0.30915252370868213" alpha="1" colorSpace="calibratedRGB"/>
@@ -617,7 +724,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="384" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8yh-LS-Nm8" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="8yh-LS-Nm8" customClass="FrontViewNavBar" customModule="BankApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.37252957739999998" green="0.75378605769999996" blue="0.30915252370000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -643,6 +750,7 @@
         <image name="user" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sna-RW-E0A"/>
+        <segue reference="lsf-Sk-4w3"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -8,14 +8,17 @@
 
 import UIKit
 
-class HomeTableView: UITableView {
+class HomeTableView: UITableView, TableSegueProtocol {
 
+    var parent: EventReceiverProtocol!
     let tableViewDelegate = TableViewDelegate()
+    let nibs = ["CardCell", "DepositCell", "GoalCell"]
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NotificationCenter.default.addObserver(self, selector: #selector(initDrawing(_:)), name: .CardsHaveBeenLoadedNotification, object: nil)
         self.tableFooterView = UIView(frame: CGRect.zero)
+        self.registerNibs()
     }
     
     func initDrawing(_ sender: Any?){
@@ -24,6 +27,18 @@ class HomeTableView: UITableView {
         self.reloadData()
     }
     
+    func registerNibs(){
+        
+        for i in 0..<nibs.count{
+            let nib = UINib(nibName: nibs[i], bundle: nil)
+            self.register(nib, forCellReuseIdentifier: nibs[i])
+        }
+        
+    }
     
+    func prepareForSegue(data: Any?, segue: SegueID){
+        self.parent.initSegueFromSubview(data: data, segue: segue)
+    }
+   
 
 }
