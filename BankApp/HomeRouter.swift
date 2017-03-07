@@ -15,6 +15,11 @@ class HomeRouter: FrontViewRouter {
         super.viewDidLoad()
         
     }
-
+    
+    func invoke(with segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? CardDescriptionWireframe{
+            destination.card = sender as! Card
+        }
+    }
 
 }

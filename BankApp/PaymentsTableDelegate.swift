@@ -24,14 +24,13 @@ class PaymentsTableDelegate: NSObject, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if activeRow != nil{
-            let disabledCell = tableView.cellForRow(at: activeRow!)
-            disabledCell?.backgroundColor = .white
-        }
+        let cell = tableView.cellForRow(at: indexPath)!
+        
+        animate(cell, with: #colorLiteral(red: 0.9307184815, green: 0.9273709655, blue: 0.934214592, alpha: 1), duration: 0.25, delay: nil, completion: { _ in
+            self.animate(cell, with: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), duration: 0.25, delay: nil, completion: nil)
+        })
         
         if let table = tableView as? TableSegueProtocol{
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).withAlphaComponent(0.1)
             let segue = seguesID[indexPath.section]
             table.prepareForSegue(data: nil, segue: SegueID(rawValue: segue)!)
         }

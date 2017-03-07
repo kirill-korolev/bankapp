@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryWireframe: UIViewController {
+class HistoryWireframe: Mainframe {
 
     override func viewDidLoad() {
         super.viewDidLoad()

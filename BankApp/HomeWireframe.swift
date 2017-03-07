@@ -12,13 +12,7 @@ extension Notification.Name{
     static let CardsHaveBeenLoadedNotification = Notification.Name("CardsHaveBeenLoadedNotification")
 }
 
-enum SegueID: String{
-    case cards = "cardDescriptionSegue"
-    case transfer = "transferSegue"
-    case payment = "paymentSegue"
-}
-
-class HomeWireframe: UIViewController, EventReceiverProtocol {
+class HomeWireframe: Mainframe, EventReceiverProtocol {
     
     @IBOutlet weak var tableView: HomeTableView!
     
@@ -39,5 +33,6 @@ class HomeWireframe: UIViewController, EventReceiverProtocol {
     func initSegueFromSubview(data: Any?, segue: SegueID){
         self.performSegue(withIdentifier: segue.rawValue, sender: data)
     }
+    
     
 }

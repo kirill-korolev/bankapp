@@ -16,7 +16,7 @@ extension JSSAlertView {
         guard let dateUInt = timeLeft else {
             return
         }
-        self.timerLabel.text = stringFromUInt(number: dateUInt)
+        self.timerLabel?.text = stringFromUInt(number: dateUInt)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
     }
     
@@ -28,7 +28,7 @@ extension JSSAlertView {
         
         if(timeLeftExists > 0) {
             self.timeLeft! -= 1
-            self.timerLabel.text = stringFromUInt(number: timeLeft!)
+            self.timerLabel?.text = stringFromUInt(number: timeLeft!)
         } else {
             closeView(false)
         }

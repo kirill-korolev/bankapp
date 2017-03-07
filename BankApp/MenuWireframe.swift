@@ -8,6 +8,12 @@
 
 import UIKit
 
+public enum SegueID: String{
+    case cards = "cardDescriptionSegue"
+    case goal = "goalSegue"
+    case transfer = "transferSegue"
+    case payment = "paymentSegue"
+}
 
 //MARK: - Notification Extension
 
@@ -26,6 +32,8 @@ public extension UIViewController
         if(self.revealViewController() != nil)
         {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.navigationController?.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
         }
     }
 }
@@ -60,7 +68,7 @@ class MenuViewDelegate: NSObject, UITableViewDelegate
 {
     var parentController: UITableViewController?
     let defaultBGColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-    let selectedBGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.7)
+    let selectedBGColor = #colorLiteral(red: 0.2367918491, green: 0.2358009517, blue: 0.2378268242, alpha: 1)
     var selectedID: IndexPath?
     
     func updateCellsInTableView(tableView: UITableView)

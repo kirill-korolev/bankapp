@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileWireframe: UIViewController {
+class ProfileWireframe: Mainframe {
     
     var navController: ProfileRouter!
     
@@ -17,8 +17,7 @@ class ProfileWireframe: UIViewController {
         self.addGestureToScene()
         
         let user = UserDefaults.standard.loadObjectWithKey(key: "user") as! User
-        navController = self.navigationController as! ProfileRouter
-        navController.updateViewWithData(user: user)
+        self.navigationController?.navigationBar.topItem!.title = user.fullname
     }
 
 

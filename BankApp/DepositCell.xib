@@ -24,7 +24,7 @@
                         <color key="textColor" red="0.63383413460000004" green="0.63383413460000004" blue="0.63383413460000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcU-6r-D9g">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcU-6r-D9g">
                         <rect key="frame" x="0.0" y="0.0" width="75" height="90"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="YoL-pm-NIc"/>

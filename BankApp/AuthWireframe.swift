@@ -52,7 +52,7 @@ class AuthWireframe: UIViewController, UserDelegate {
         }
         else if error.contains(.emailField) || error.contains(.passField)
         {
-            showError(title: "Ошибка", text: "Вы не ввели необходимые данные!")
+            showError(title: "Ошибка", text: "Вы не ввели данные!")
         }
 
         
@@ -79,7 +79,7 @@ class AuthWireframe: UIViewController, UserDelegate {
     //MARK: - AlertViews
     
     func showError(title: String, text: String){
-        let alertView = JSSAlertView().show(self, title: title, text: text, noButtons: false, buttonText: "ОК", cancelButtonText: nil, color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), iconImage: nil, delay: nil, timeLeft: nil)
+        let alertView = JSSAlertView().show(self, title: title, text: text, noButtons: true, buttonText: nil, cancelButtonText: nil, color: #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1), iconImage: nil, delay: nil, timeLeft: 1)
         alertView.setTextTheme(.light)
     }
     

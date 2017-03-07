@@ -45,11 +45,13 @@
 		ED6D0F671E5CC02D006AB9A0 /* PaymentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D0F661E5CC02D006AB9A0 /* PaymentsCell.swift */; };
 		ED71070C1E4B8C8900B7738F /* MenuContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71070B1E4B8C8900B7738F /* MenuContainer.swift */; };
 		ED71070F1E4B932F00B7738F /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71070E1E4B932F00B7738F /* SignInButton.swift */; };
-		ED7CD3871E60826B0028CFA3 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7CD3861E60826B0028CFA3 /* TableProtocol.swift */; };
+		ED7CD3871E60826B0028CFA3 /* ProtocolsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7CD3861E60826B0028CFA3 /* ProtocolsBundle.swift */; };
+		ED7CD3891E6472FA0028CFA3 /* CardDescriptionWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7CD3881E6472FA0028CFA3 /* CardDescriptionWireframe.swift */; };
 		ED8C8C771E51C47600DDBC8B /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C8C751E51C47600DDBC8B /* CardCell.swift */; };
 		ED8C8C781E51C47600DDBC8B /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8C8C761E51C47600DDBC8B /* CardCell.xib */; };
 		ED9F6FCE1E4B475100A5C3C3 /* ProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */; };
 		ED9F6FD01E4B478100A5C3C3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */; };
+		EDDB81961E6F14D900E6022B /* GoalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDB81951E6F14D900E6022B /* GoalWireframe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,11 +99,13 @@
 		ED6D0F661E5CC02D006AB9A0 /* PaymentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsCell.swift; sourceTree = "<group>"; };
 		ED71070B1E4B8C8900B7738F /* MenuContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContainer.swift; sourceTree = "<group>"; };
 		ED71070E1E4B932F00B7738F /* SignInButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
-		ED7CD3861E60826B0028CFA3 /* TableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
+		ED7CD3861E60826B0028CFA3 /* ProtocolsBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolsBundle.swift; sourceTree = "<group>"; };
+		ED7CD3881E6472FA0028CFA3 /* CardDescriptionWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDescriptionWireframe.swift; sourceTree = "<group>"; };
 		ED8C8C751E51C47600DDBC8B /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		ED8C8C761E51C47600DDBC8B /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		ED9F6FCD1E4B475100A5C3C3 /* ProfileWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileWireframe.swift; sourceTree = "<group>"; };
 		ED9F6FCF1E4B478100A5C3C3 /* ProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		EDDB81951E6F14D900E6022B /* GoalWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalWireframe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,18 +208,15 @@
 		ED2974031E4A0004000C6E39 /* Home Module */ = {
 			isa = PBXGroup;
 			children = (
+				ED7CD38B1E6473150028CFA3 /* Entities */,
 				ED2973F21E48E27E000C6E39 /* HomeWireframe.swift */,
 				ED2974011E49FFFB000C6E39 /* HomeRouter.swift */,
 				ED6006D71E4A723100B5E096 /* TableViewDelegate.swift */,
 				ED6006D91E4A735400B5E096 /* HomeTableData.swift */,
 				ED6006DB1E4A758500B5E096 /* HomeTableView.swift */,
-				ED6006DD1E4AF6A400B5E096 /* Card.swift */,
-				ED8C8C751E51C47600DDBC8B /* CardCell.swift */,
-				ED8C8C761E51C47600DDBC8B /* CardCell.xib */,
-				ED6D0F3B1E576D28006AB9A0 /* DepositCell.swift */,
-				ED6D0F3C1E576D28006AB9A0 /* DepositCell.xib */,
-				ED6D0F3F1E5773D7006AB9A0 /* GoalCell.swift */,
-				ED6D0F401E5773D7006AB9A0 /* GoalCell.xib */,
+				ED7CD38A1E6473060028CFA3 /* Cells */,
+				ED7CD3881E6472FA0028CFA3 /* CardDescriptionWireframe.swift */,
+				EDDB81951E6F14D900E6022B /* GoalWireframe.swift */,
 			);
 			name = "Home Module";
 			sourceTree = "<group>";
@@ -282,7 +283,7 @@
 				ED2973D51E48D958000C6E39 /* AppDelegate.swift */,
 				ED2973E41E48D958000C6E39 /* Info.plist */,
 				ED6D0F461E5898F9006AB9A0 /* IntExtension.swift */,
-				ED7CD3861E60826B0028CFA3 /* TableProtocol.swift */,
+				ED7CD3861E60826B0028CFA3 /* ProtocolsBundle.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -297,6 +298,27 @@
 				ED38BD6F1E4F751400A12BE5 /* AuthWireframe.swift */,
 			);
 			name = "Auth Module";
+			sourceTree = "<group>";
+		};
+		ED7CD38A1E6473060028CFA3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C8C751E51C47600DDBC8B /* CardCell.swift */,
+				ED8C8C761E51C47600DDBC8B /* CardCell.xib */,
+				ED6D0F3B1E576D28006AB9A0 /* DepositCell.swift */,
+				ED6D0F3C1E576D28006AB9A0 /* DepositCell.xib */,
+				ED6D0F3F1E5773D7006AB9A0 /* GoalCell.swift */,
+				ED6D0F401E5773D7006AB9A0 /* GoalCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		ED7CD38B1E6473150028CFA3 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				ED6006DD1E4AF6A400B5E096 /* Card.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7CD3871E60826B0028CFA3 /* TableProtocol.swift in Sources */,
+				ED7CD3871E60826B0028CFA3 /* ProtocolsBundle.swift in Sources */,
 				ED9F6FD01E4B478100A5C3C3 /* ProfileRouter.swift in Sources */,
 				ED6006D81E4A723100B5E096 /* TableViewDelegate.swift in Sources */,
 				ED38BD6C1E4F6B1000A12BE5 /* User.swift in Sources */,
@@ -436,6 +458,7 @@
 				ED6D0F471E5898F9006AB9A0 /* IntExtension.swift in Sources */,
 				ED2973D61E48D958000C6E39 /* AppDelegate.swift in Sources */,
 				ED2973F31E48E27E000C6E39 /* HomeWireframe.swift in Sources */,
+				ED7CD3891E6472FA0028CFA3 /* CardDescriptionWireframe.swift in Sources */,
 				ED2974001E49FFEF000C6E39 /* FrontViewRouter.swift in Sources */,
 				ED8C8C771E51C47600DDBC8B /* CardCell.swift in Sources */,
 				ED6006DE1E4AF6A400B5E096 /* Card.swift in Sources */,
@@ -457,6 +480,7 @@
 				ED38BD691E4E4F4B00A12BE5 /* PassCodeWireframe.swift in Sources */,
 				ED6D0F411E5773D7006AB9A0 /* GoalCell.swift in Sources */,
 				ED6006DA1E4A735400B5E096 /* HomeTableData.swift in Sources */,
+				EDDB81961E6F14D900E6022B /* GoalWireframe.swift in Sources */,
 				ED2973F91E491113000C6E39 /* BottomMenuViewController.swift in Sources */,
 				ED2973F71E491104000C6E39 /* TopMenuViewController.swift in Sources */,
 				ED2974021E49FFFB000C6E39 /* HomeRouter.swift in Sources */,

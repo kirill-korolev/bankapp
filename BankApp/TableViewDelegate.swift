@@ -14,6 +14,15 @@ enum Section: Int{
     case goals = 2
 }
 
+extension UITableViewDelegate{
+    func animate(_ cell: UITableViewCell, with color: UIColor, duration: TimeInterval, delay: TimeInterval?, completion: ((Bool) -> (Void))?){
+        UIView.animate(withDuration: duration, delay: delay ?? 0.0, options: .curveEaseIn, animations: {
+            cell.backgroundColor = color
+        }, completion: completion)
+    }
+}
+
+
 class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, HomeTableDataDelegate {
     
     let tableData = HomeTableData.instance
@@ -36,43 +45,33 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
         NotificationCenter.default.post(name: .CardsHaveBeenLoadedNotification, object: nil)
     }
     
-    //MARK: - Gestures
-    
-    func didTouchHeader(_ sender: UIButton){
-        
-        
-        
-    }
-    
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        if activeRow != nil{
-            let disabledCell = tableView.cellForRow(at: activeRow!)
-            disabledCell?.backgroundColor = .white
-        }
-        
-        cell?.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).withAlphaComponent(0.1)
-        
-        if indexPath.section == Section.cards.rawValue{
-            if cards.count > 0{
-                let card = cards[indexPath.row]
-                if let table = tableView as? TableSegueProtocol{
+        if let table = tableView as? TableSegueProtocol{
+            
+            let cell = tableView.cellForRow(at: indexPath)!
+            
+            animate(cell, with: #colorLiteral(red: 0.9307184815, green: 0.9273709655, blue: 0.934214592, alpha: 1), duration: 0.25, delay: nil, completion: { _ in
+                self.animate(cell, with: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), duration: 0.25, delay: nil, completion: nil)
+            })
+            
+            if indexPath.section == Section.cards.rawValue{
+                if cards.count > 0{
+                    let card = cards[indexPath.row]
                     table.prepareForSegue(data: card, segue: SegueID.cards)
                 }
             }
-        }
-        else if indexPath.section == Section.deposits.rawValue{
+            else if indexPath.section == Section.deposits.rawValue{
+                table.prepareForSegue(data: nil, segue: SegueID.goal)
+            }
+            else if indexPath.section == Section.goals.rawValue{
+                table.prepareForSegue(data: nil, segue: SegueID.goal)
+            }
             
+            activeRow = indexPath
         }
-        else if indexPath.section == Section.goals.rawValue{
-            
-        }
-        
-        activeRow = indexPath
     }
     
     //MARK: - UITableViewDataSource
@@ -92,12 +91,7 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
         label.text = tableData.sections[section]
         label.textColor = UIColor.black.withAlphaComponent(0.5)
         headerView.addSubview(label)
-        
-        /*let backgroundButton = UIButton(frame: headerView.frame)
-        backgroundButton.addTarget(self, action: #selector(didTouchHeader(_:section:)), for: .touchUpInside)
-        
-        headerView.addSubview(backgroundButton)
-        */
+
         
         return headerView
     }

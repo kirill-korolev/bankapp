@@ -50,9 +50,7 @@ extension PassCodeWireframe: PasswordInputCompleteProtocol
 {
     func passwordInputComplete(_ passwordContainerView: PasswordContainerView, input: String) {
         
-        
         if isInitial != true {
-            
             if user.code != input
             {
                 showAlert(success: false)
@@ -61,10 +59,8 @@ extension PassCodeWireframe: PasswordInputCompleteProtocol
             }
             
             performSegueOnThread()
-            
         }
         else{
-            
             showAlert(success: true)
             
             user.code = input
@@ -89,7 +85,7 @@ extension PassCodeWireframe: PasswordInputCompleteProtocol
             alertView.setTextTheme(.light)
         }
         else{
-            let alertView = JSSAlertView().show(self, title: "Что-то пошло не так", text: "Вы ввели неверный пароль", noButtons: false, buttonText: "ОК", cancelButtonText: nil, color: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1), iconImage: nil, delay: nil, timeLeft: nil)
+            let alertView = JSSAlertView().show(self, title: "Что-то пошло не так", text: "Вы ввели неверный пароль", noButtons: true, buttonText: nil, cancelButtonText: nil, color: #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1), iconImage: nil, delay: nil, timeLeft: 1)
             
             alertView.setTextTheme(.light)
         }

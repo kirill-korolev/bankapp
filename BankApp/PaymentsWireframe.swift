@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentsWireframe: UIViewController, EventReceiverProtocol {
+class PaymentsWireframe: Mainframe, EventReceiverProtocol {
 
     @IBOutlet weak var tableView: PaymentsView!
     

@@ -288,13 +288,15 @@ open class JSSAlertView: UIViewController {
         
         //timer
         if let time = timeLeft {
-            self.timerLabel = UILabel()
+            /*self.timerLabel = UILabel()
             timerLabel.textAlignment = .center
-            self.timeLeft = time
             self.timerLabel.font = UIFont(name: self.timerFont, size: 27)
             self.timerLabel.textColor = textColor
             self.containerView.addSubview(timerLabel)
-            configureTimer()
+            */
+            
+           self.timeLeft = time
+           configureTimer()
         }
 
 		// Button
@@ -382,7 +384,7 @@ open class JSSAlertView: UIViewController {
     
 	/// Method for removing JSSAlertView from view when there are no buttons
 	func buttonTap() {
-		closeView(true, source: .close);
+		closeView(true, source: .close)
 	}
 
     

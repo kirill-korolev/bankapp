@@ -15,3 +15,11 @@ protocol EventReceiverProtocol{
 protocol TableSegueProtocol{
     func prepareForSegue(data: Any?, segue: SegueID)
 }
+
+class Mainframe: UIViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigation = self.navigationController as! RouterProtocol
+        navigation.invoke?(with: segue, sender: sender)
+    }
+    
+}

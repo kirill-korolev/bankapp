@@ -8,7 +8,12 @@
 
 import UIKit
 
-class FrontViewRouter: UINavigationController {
+@objc public protocol RouterProtocol{
+    @objc optional
+    func invoke(with segue: UIStoryboardSegue, sender: Any?) -> Void
+}
+
+class FrontViewRouter: UINavigationController, RouterProtocol {
 }
 
 class FrontViewNavBar: UINavigationBar
