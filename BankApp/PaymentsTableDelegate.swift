@@ -10,9 +10,7 @@ import UIKit
 
 class PaymentsTableDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
 
-    let sections = [["Переводы", ["Между своими счетами","Клиенту Binary Bank","На карту в другой банк"]], ["Платежи",["Мобильная связь","Интернет и ТВ", "ЖКХ и домашний телефон"]]]
-    
-    let seguesID = ["transferSegue","paymentSegue"]
+    let sections = [["Переводы", ["Между своими счетами","Клиенту Binary Bank"]]]
     
     var activeRow: IndexPath?
     
@@ -24,15 +22,17 @@ class PaymentsTableDelegate: NSObject, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)!
-        
-        animate(cell, with: #colorLiteral(red: 0.9307184815, green: 0.9273709655, blue: 0.934214592, alpha: 1), duration: 0.25, delay: nil, completion: { _ in
-            self.animate(cell, with: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), duration: 0.25, delay: nil, completion: nil)
-        })
-        
         if let table = tableView as? TableSegueProtocol{
-            let segue = seguesID[indexPath.section]
-            table.prepareForSegue(data: nil, segue: SegueID(rawValue: segue)!)
+            let cell = tableView.cellForRow(at: indexPath)!
+            
+            animate(cell, with: #colorLiteral(red: 0.9307184815, green: 0.9273709655, blue: 0.934214592, alpha: 1), duration: 0.25, delay: nil, completion: { _ in
+                self.animate(cell, with: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), duration: 0.25, delay: nil, completion: nil)
+            })
+            
+            let segue = indexPath.section == 0 ? indexPath.row == 0 ? SegueID.selfTransfer : SegueID.transfer : SegueID.payment
+            let array = sections[indexPath.section][1] as? [String]
+            let data = array?[indexPath.row]
+            table.prepareForSegue(data: data, segue: segue)
         }
         
         activeRow = indexPath

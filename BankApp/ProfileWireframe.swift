@@ -11,13 +11,25 @@ import UIKit
 class ProfileWireframe: Mainframe {
     
     var navController: ProfileRouter!
+    let user = UserDefaults.standard.loadObjectWithKey(key: "user") as! User
+    
+    @IBOutlet weak var profileImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addGestureToScene()
         
-        let user = UserDefaults.standard.loadObjectWithKey(key: "user") as! User
+        
         self.navigationController?.navigationBar.topItem!.title = user.fullname
+        prepareImageViewForRender(imageView: profileImage)
+
+    }
+    
+    func prepareImageViewForRender(imageView: UIImageView){
+        imageView.image = user.img!
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = profileImage.frame.height/2
+        imageView.layer.masksToBounds = true
     }
 
 

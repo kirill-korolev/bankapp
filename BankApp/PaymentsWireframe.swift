@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DataReceiver{
+    var data: String? { get set }
+}
+
 class PaymentsWireframe: Mainframe, EventReceiverProtocol {
 
     @IBOutlet weak var tableView: PaymentsView!
@@ -22,6 +26,11 @@ class PaymentsWireframe: Mainframe, EventReceiverProtocol {
     
     func initSegueFromSubview(data: Any?, segue: SegueID) {
         self.performSegue(withIdentifier: segue.rawValue, sender: data)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destination = segue.destination as! DataReceiver
+        destination.data = sender as? String
     }
     
 }

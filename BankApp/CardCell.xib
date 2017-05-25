@@ -51,7 +51,7 @@
                             <constraint firstAttribute="height" constant="21" id="hGO-3s-44o"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                        <color key="textColor" red="0.37077372209999998" green="0.75378605769999996" blue="0.30508501389999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.63383413460000004" green="0.63383413460000004" blue="0.63383413460000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

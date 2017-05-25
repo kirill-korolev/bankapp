@@ -17,14 +17,25 @@ class HomeTableView: UITableView, TableSegueProtocol {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NotificationCenter.default.addObserver(self, selector: #selector(initDrawing(_:)), name: .CardsHaveBeenLoadedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDrawing(_:)), name: .DepositsHaveBeenLoadedNotification, object: nil)
         self.tableFooterView = UIView(frame: CGRect.zero)
         self.registerNibs()
+        self.layer.opacity = 0
     }
     
     func initDrawing(_ sender: Any?){
         self.delegate = tableViewDelegate
         self.dataSource = tableViewDelegate
         self.reloadData()
+        
+        if let vc = parent as? HomeWireframe{
+            vc.activityIndicator.stopAnimating()
+        }
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.layer.opacity = 1
+        }, completion: nil)
     }
     
     func registerNibs(){

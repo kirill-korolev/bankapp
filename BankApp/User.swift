@@ -29,6 +29,18 @@ extension UserDefaults
         
     }
     
+    func loadArrayWithKey(key: String) -> [Any?]{
+        guard let encoded = UserDefaults.standard.array(forKey: key) as? [Data] else
+        {
+            return [Any?]()
+        }
+        let object = encoded.map{
+            NSKeyedUnarchiver.unarchiveObject(with: $0)
+        }
+        
+        return object
+    }
+    
 }
 
 class User: NSObject, NSCoding {
@@ -38,12 +50,16 @@ class User: NSObject, NSCoding {
     let password: String
     var code: String?
     let id: Int
+    var imgURL: String?
+    var img: UIImage?
     
-    init(fullname: String, email: String, password: String, id: Int) {
+    init(fullname: String, email: String, password: String, id: Int, imgURL: String?, img: UIImage?) {
         self.fullname = fullname
         self.email = email
         self.password = password
         self.id = id
+        self.img = img
+        self.imgURL = imgURL
     }
     
     func encode(with aCoder: NSCoder) {
@@ -52,6 +68,8 @@ class User: NSObject, NSCoding {
         aCoder.encode(self.password, forKey: "password")
         aCoder.encode(self.code, forKey: "code")
         aCoder.encode(self.id, forKey: "id")
+        aCoder.encode(self.img, forKey: "img")
+        aCoder.encode(self.imgURL, forKey: "imgURL")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,6 +78,8 @@ class User: NSObject, NSCoding {
         self.password = aDecoder.decodeObject(forKey: "password") as! String
         self.code = aDecoder.decodeObject(forKey: "code") as? String
         self.id = aDecoder.decodeInteger(forKey: "id")
+        self.img = aDecoder.decodeObject(forKey: "img") as? UIImage
+        self.imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String
     }
 
     

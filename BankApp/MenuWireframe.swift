@@ -13,6 +13,7 @@ public enum SegueID: String{
     case goal = "goalSegue"
     case transfer = "transferSegue"
     case payment = "paymentSegue"
+    case selfTransfer = "selfTransferSegue"
 }
 
 //MARK: - Notification Extension

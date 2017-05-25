@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoalWireframe: UIViewController {
+class DepositWireframe: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

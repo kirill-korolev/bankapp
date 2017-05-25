@@ -1,17 +1,20 @@
 //
-//  GoalCell.swift
+//  HistoryCell.swift
 //  BankApp
 //
-//  Created by Kirill Korolev on 17.02.17.
+//  Created by Kirill Korolev on 24/05/17.
 //  Copyright © 2017 Kirill Korolev. All rights reserved.
 //
 
 import UIKit
 
-class GoalCell: UITableViewCell {
+class HistoryCell: UITableViewCell {
 
-    @IBOutlet weak var sumLabel: UILabel!
-    @IBOutlet weak var termLabel: UILabel!
+    @IBOutlet weak var operationBill: UILabel!
+    @IBOutlet weak var operationSum: UILabel!
+    @IBOutlet weak var operationType: UILabel!
+    @IBOutlet weak var operationDate: UILabel!
+    
     
     
     override func awakeFromNib() {

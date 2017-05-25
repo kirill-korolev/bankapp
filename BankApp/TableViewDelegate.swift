@@ -23,11 +23,13 @@ extension UITableViewDelegate{
 }
 
 
-class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, HomeTableDataDelegate {
+class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, HomeTableDataDelegate, DepositLoaderDelegate {
     
     let tableData = HomeTableData.instance
     var cards: [Card]!
     var activeRow: IndexPath?
+    var deposits: [Deposit] = []
+    
     
     //Constants
     let headerHeight: CGFloat = 45.0
@@ -35,6 +37,7 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
     override init() {
         super.init()
         tableData.delegate = self
+        DepositLoader.instance.delegate = self
         cards = []
     }
     
@@ -43,6 +46,8 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
     func cardsDidLoad(cards: NSArray){
         self.cards = cards as! [Card]
         NotificationCenter.default.post(name: .CardsHaveBeenLoadedNotification, object: nil)
+        UserDefaults.standard.saveObject(object:self.cards, key: "cards")
+        UserDefaults.standard.synchronize()
     }
     
     //MARK: - UITableViewDelegate
@@ -104,6 +109,8 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
         switch section{
         case Section.cards.rawValue:
             return cards.count != 0 ? cards.count: 1
+        case 2:
+            return deposits.count
         default:
             return 1
         }
@@ -174,6 +181,16 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
     func cellForEmptyGoal(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell", for: indexPath) as! GoalCell
         
+        cell.sumLabel.text = "\(deposits[indexPath.row].initialSum)"
+        cell.termLabel.text = "\(deposits[indexPath.row].date) г."
+        
+        
         return cell
     }
+    
+    func depositsHaveBeenLoaded(deposits: NSArray) {
+        self.deposits = deposits as! [Deposit]
+        NotificationCenter.default.post(name: .DepositsHaveBeenLoadedNotification, object: nil)
+    }
+    
 }

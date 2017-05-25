@@ -1,31 +1,28 @@
 //
-//  HomeTableData.swift
+//  DepositLoader.swift
 //  BankApp
 //
-//  Created by Kirill Korolev on 08.02.17.
+//  Created by Kirill Korolev on 25/05/17.
 //  Copyright © 2017 Kirill Korolev. All rights reserved.
 //
 
 import Foundation
 
-public protocol HomeTableDataDelegate: class
+public protocol DepositLoaderDelegate: class
 {
-    func cardsDidLoad(cards: NSArray)
+    func depositsHaveBeenLoaded(deposits: NSArray)
 }
 
-class HomeTableData:NSObject, URLSessionDataDelegate
-{
-    static let instance = HomeTableData()
+class DepositLoader: NSObject, URLSessionDataDelegate{
+    static let instance = DepositLoader()
     
-    let sections = ["Карты","Вклады и счета","Цели"]
-    weak var delegate: HomeTableDataDelegate!
+    weak var delegate: DepositLoaderDelegate!
     var data: NSMutableData!
-    var urlPath:String!
-
+    var urlPath: String!
     
-    func loadCards(id: Int)
+    func uploadDeposit(id: Int)
     {
-        urlPath = "http://thehomeland.ru/service/card.php?id=\(id)"
+        urlPath = "http://thehomeland.ru/service/loadDeposit.php?id=\(id)"
         data = NSMutableData()
         
         let url: URL = URL(string: urlPath)!
@@ -35,7 +32,6 @@ class HomeTableData:NSObject, URLSessionDataDelegate
         session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         let task = session.dataTask(with: url)
         task.resume()
-        
     }
     
     //MARK: URLSessionDataDelegate
@@ -65,30 +61,25 @@ class HomeTableData:NSObject, URLSessionDataDelegate
         }
         
         var jsonDictionary = NSDictionary()
-        let cards = NSMutableArray()
+        let deposits = NSMutableArray()
         
         for i in 0..<jsonResult.count{
             
             jsonDictionary = jsonResult[i] as! NSDictionary
             
-            let id = jsonDictionary["id"] as! String
-            let title = jsonDictionary["title"] as! String
-            let producer = jsonDictionary["producer"] as! String
-            let type = jsonDictionary["type"] as! String
-            let number = jsonDictionary["number"] as! String
-            let cvv = jsonDictionary["cvv"] as! String
-            let balance = jsonDictionary["balance"] as! String
+            let sum = Int(jsonDictionary["sum"] as! String)
+            let term = jsonDictionary["term"] as! String
             
-            let cardInfo = CardInfo(type: CardType(rawValue: Int(type)!)!, title: CardProducer(rawValue:Int(producer)!)!, number: number, cvv: Int(cvv)!)
-            let card = Card(id: Int(id)!, title: title, info: cardInfo, balance: Int(balance)!)
-            cards.add(card)
+            let deposit = Deposit(initialSum: sum!, date: term)
+            deposits.add(deposit)
             
         }
         
         DispatchQueue.main.async {
-            self.delegate.cardsDidLoad(cards: cards)
+            self.delegate.depositsHaveBeenLoaded(deposits: deposits)
         }
         
     }
+
     
 }

@@ -1,31 +1,28 @@
 //
-//  HomeTableData.swift
+//  HistoryManager.swift
 //  BankApp
 //
-//  Created by Kirill Korolev on 08.02.17.
+//  Created by Kirill Korolev on 24/05/17.
 //  Copyright © 2017 Kirill Korolev. All rights reserved.
 //
 
 import Foundation
 
-public protocol HomeTableDataDelegate: class
-{
-    func cardsDidLoad(cards: NSArray)
+public protocol HistoryDataDelegate: class{
+    func historyDidLoad(history: NSArray)
 }
 
-class HomeTableData:NSObject, URLSessionDataDelegate
-{
-    static let instance = HomeTableData()
+class HistoryManager: NSObject, URLSessionDataDelegate{
     
-    let sections = ["Карты","Вклады и счета","Цели"]
-    weak var delegate: HomeTableDataDelegate!
+    static let instance = HistoryManager()
+    
+    weak var delegate: HistoryDataDelegate!
     var data: NSMutableData!
-    var urlPath:String!
-
+    var urlPath: String!
     
-    func loadCards(id: Int)
+    func loadHistory(ownerID: Int)
     {
-        urlPath = "http://thehomeland.ru/service/card.php?id=\(id)"
+        urlPath = "http://thehomeland.ru/service/history.php?owner=\(ownerID)"
         data = NSMutableData()
         
         let url: URL = URL(string: urlPath)!
@@ -35,7 +32,6 @@ class HomeTableData:NSObject, URLSessionDataDelegate
         session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         let task = session.dataTask(with: url)
         task.resume()
-        
     }
     
     //MARK: URLSessionDataDelegate
@@ -65,30 +61,36 @@ class HomeTableData:NSObject, URLSessionDataDelegate
         }
         
         var jsonDictionary = NSDictionary()
-        let cards = NSMutableArray()
+        let history = NSMutableArray()
         
         for i in 0..<jsonResult.count{
             
             jsonDictionary = jsonResult[i] as! NSDictionary
             
-            let id = jsonDictionary["id"] as! String
-            let title = jsonDictionary["title"] as! String
-            let producer = jsonDictionary["producer"] as! String
-            let type = jsonDictionary["type"] as! String
-            let number = jsonDictionary["number"] as! String
-            let cvv = jsonDictionary["cvv"] as! String
-            let balance = jsonDictionary["balance"] as! String
+            let date = jsonDictionary["date"] as! String
+            let sum = Float(jsonDictionary["sum"] as! String)!
+            let bill = jsonDictionary["bill"] as! String
+            let receiver = Int(jsonDictionary["receiver"] as! String)!
+            let owner = Int(jsonDictionary["owner"] as! String)!
             
-            let cardInfo = CardInfo(type: CardType(rawValue: Int(type)!)!, title: CardProducer(rawValue:Int(producer)!)!, number: number, cvv: Int(cvv)!)
-            let card = Card(id: Int(id)!, title: title, info: cardInfo, balance: Int(balance)!)
-            cards.add(card)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM"
+            let day = date.components(separatedBy: "-")[2]
+            let month = date.components(separatedBy: "-")[1]
+            let dateString = "\(day).\(month)"
+            let formattedDate = formatter.date(from: dateString)!
+            
+            let operation = Operation(date: formattedDate, sum: sum, bill: bill, receiverID: nil, receiver: Receiver(rawValue:receiver)!, owner: owner)
+            
+            history.add(operation)
             
         }
         
         DispatchQueue.main.async {
-            self.delegate.cardsDidLoad(cards: cards)
+            self.delegate.historyDidLoad(history: history)
         }
-        
     }
+    
+    
     
 }

@@ -17,45 +17,58 @@ struct QueryError: OptionSet
     static let passField = QueryError(rawValue: 1 << 1)
 }
 
-class AuthWireframe: UIViewController, UserDelegate {
+class AuthWireframe: UIViewController, UserDelegate, ImageSessionDelegate {
 
     
     @IBOutlet weak var emailTextField: AuthTextField!
     @IBOutlet weak var passwordTextField: AuthTextField!
     
     var users: [User] = []
+    let connection = Reachability()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UserManager.instance.delegate = self
+        ImageManager.instance.delegate = self
         
-        if (UserDefaults.standard.loadObjectWithKey(key: "user") != nil)
-        {
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "passCodeSegue", sender: self)
+        if checkConnection(){
+            if (UserDefaults.standard.loadObjectWithKey(key: "user") != nil)
+            {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "passCodeSegue", sender: self)
+                }
+                
             }
-            
         }
         
     }
     
+    func checkConnection() -> Bool{
+        if !connection.isReachable{
+            DispatchQueue.main.async {
+                self.showError(title: "Отсутствует соединение с сетью", text: "К сожалению, вы не подключены к сети")
+            }
+            return false
+        }
+        return true
+    }
     
     @IBAction func didTouchSignInButton(_ sender: Any) {
         
-        let error: QueryError = catchErrorsBeforeSending(email: emailTextField.text, pass: passwordTextField.text)
-        
-        if error.isEmpty
-        {
-            let email = emailTextField.text!
-            let password = passwordTextField.text!
-            UserManager.instance.getUsers(email: email, password: password)
+        if checkConnection(){
+            let error: QueryError = catchErrorsBeforeSending(email: emailTextField.text, pass: passwordTextField.text)
+            
+            if error.isEmpty
+            {
+                let email = emailTextField.text!
+                let password = passwordTextField.text!
+                UserManager.instance.getUsers(email: email, password: password)
+            }
+            else if error.contains(.emailField) || error.contains(.passField)
+            {
+                showError(title: "Ошибка", text: "Вы не ввели данные!")
+            }
         }
-        else if error.contains(.emailField) || error.contains(.passField)
-        {
-            showError(title: "Ошибка", text: "Вы не ввели данные!")
-        }
-
-        
     }
     
     
@@ -88,9 +101,15 @@ class AuthWireframe: UIViewController, UserDelegate {
     
     func usersDownloaded(users: NSArray) {
         self.users = users as! [User]
-        
+        ImageManager.instance.downloadImage(urlString: self.users[0].imgURL!)
+    }
+    
+    //MARK: - ImageSessionDelegate
+    
+    func imageDidLoad(image: UIImage) {
         if self.users.count > 0{
             let user = self.users[0]
+            user.img = image
             UserDefaults.standard.saveObject(object:user, key: "user")
             UserDefaults.standard.synchronize()
             

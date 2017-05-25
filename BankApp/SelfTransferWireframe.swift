@@ -1,52 +1,72 @@
 //
-//  TransferWireframe.swift
+//  SelfTransferWireframe.swift
 //  BankApp
 //
-//  Created by Kirill Korolev on 23.02.17.
+//  Created by Kirill Korolev on 25/05/17.
 //  Copyright © 2017 Kirill Korolev. All rights reserved.
 //
 
 import UIKit
 import JSSAlertView
 
-class TransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, UITableViewDelegate, UploadManagerDelegate {
+class SelfTransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, UITableViewDelegate, UploadManagerDelegate {
 
     var data: String?
+    @IBOutlet weak var tableView: UITableView!
     var cards: [Card]! = []
+    var headers = ["С карты", "На карту"]
     let headerHeight: CGFloat = 35.0
     
-    @IBOutlet weak var receiverTextField: UITextField!
     @IBOutlet weak var sumTextField: UITextField!
     @IBOutlet weak var transferButton: UIButton!
-    
-    @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(UINib(nibName: "SelfTransferCell", bundle: nil), forCellReuseIdentifier: "SelfTransferCell")
+        tableView.tableFooterView = UIView(frame: .zero)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70.0
         self.cards = UserDefaults.standard.loadObjectWithKey(key: "cards") as! [Card]
         tableView.reloadData()
         
-        UploadManager.instance.delegate = self
-        
         transferButton.layer.cornerRadius = 8.0
         transferButton.layer.masksToBounds = true
+        
+        UploadManager.instance.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = data
     }
- 
+
+    
     //MARK: - UITableViewDataSource
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView(frame: CGRect(x: 0.0, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: headerHeight))
+        
+        headerView.backgroundColor = #colorLiteral(red: 0.9120810628, green: 0.9349395633, blue: 0.9612939954, alpha: 1)
+        
+        //Custom label
+        let label = UILabel(frame: CGRect(x: 15.0, y: 0.0, width: tableView.frame.size.width, height: headerHeight))
+        label.text = headers[section]
+        label.textColor = UIColor.black.withAlphaComponent(0.5)
+        headerView.addSubview(label)
+        
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +99,7 @@ class TransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, 
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! SelfTransferCell
@@ -103,33 +123,41 @@ class TransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, 
     }
     
     @IBAction func didTouchTransferButton(_ sender: Any) {
-        if sumTextField.text != "" && receiverTextField.text != ""{
+        if sumTextField.text != ""{
             if let paths = tableView.indexPathsForSelectedRows{
+                if paths.count > 1{
+                    if paths[0].row != paths[1].row{
+                        let sum = Int(sumTextField.text!)!
+                        
+                        if cards[paths[0].row].balance - sum >= 0{
+                            let curDate = Date()
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyy-MM-dd"
+                            let date = formatter.string(from: curDate)
+                            let owner = cards[paths[0].row].id
+                            let receiver = 1
+                            let receiverID = cards[paths[1].row].id
+                            
+                            var bill = ""
+                            for _ in 1...12{
+                                bill += "\(arc4random_uniform(10))"
+                            }
+                            
+                            UploadManager.instance.uploadData(date: date, sum: sum, bill: bill, receiver: receiver, receiverID: receiverID, owner: owner)
+                        }
+                        else{
+                            showAlert(success: false, title: "Упс", text: "Недостаточно средств")
+                        }
 
-                let sum = Int(sumTextField.text!)!
-                let cardNumber = receiverTextField.text!.components(separatedBy: .whitespaces).joined()
-
-                
-                if cards[paths[0].row].balance - sum >= 0{
-                    let curDate = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy-MM-dd"
-                    let date = formatter.string(from: curDate)
-                    let owner = cards[paths[0].row].id
-                    let receiver = 1
-                    
-                    var bill = ""
-                    for _ in 1...12{
-                        bill += "\(arc4random_uniform(10))"
                     }
-                    
-                    UploadManager.instance.uploadData(date: date, sum: sum, bill: bill, receiver: receiver, cardNumber: cardNumber, owner: owner)
+                    else{
+                        showAlert(success: false, title: "Упс", text: "Перевод на ту же карту")
+                    }
                     
                 }
                 else{
-                    showAlert(success: false, title: "Упс", text: "Недостаточно средств")
+                    showAlert(success: false, title: "Упс", text: "Выберите две карты для перевода")
                 }
-        
             }
             else{
                 showAlert(success: false, title: "Упс", text: "Вы не выбрали ни одной карты")
@@ -139,9 +167,8 @@ class TransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, 
         else{
             showAlert(success: false, title: "Упс", text: "Вы не ввели сумму перевода")
         }
-
     }
-
+    
     //MARK: - Alert Views
     
     func showAlert(success: Bool, title: String, text: String){
@@ -162,5 +189,5 @@ class TransferWireframe: UIViewController, DataReceiver, UITableViewDataSource, 
         showAlert(success: true, title: "Отлично", text: "Операция прошла успешно")
     }
     
-
+    
 }

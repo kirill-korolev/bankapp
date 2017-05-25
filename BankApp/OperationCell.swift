@@ -1,18 +1,21 @@
 //
-//  GoalCell.swift
+//  OperationCell.swift
 //  BankApp
 //
-//  Created by Kirill Korolev on 17.02.17.
+//  Created by Kirill Korolev on 23/05/17.
 //  Copyright © 2017 Kirill Korolev. All rights reserved.
 //
 
 import UIKit
 
-class GoalCell: UITableViewCell {
+class OperationCell: UITableViewCell {
 
-    @IBOutlet weak var sumLabel: UILabel!
-    @IBOutlet weak var termLabel: UILabel!
     
+    @IBOutlet weak var operationImage: UIImageView!
+    @IBOutlet weak var receiverTitle: UILabel!
+    @IBOutlet weak var operationType: UILabel!
+    @IBOutlet weak var operationSum: UILabel!
+    @IBOutlet weak var operationDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -78,8 +78,10 @@ class UserManager: NSObject, URLSessionDataDelegate {
             let fullname = jsonDictionary["fullname"] as! String
             let email = jsonDictionary["email"] as! String
             let password = jsonDictionary["password"] as! String
-            let id = jsonDictionary["id"] as! String
-            let user = User(fullname: fullname, email: email, password: password, id:Int(id)!)
+            let id = Int(jsonDictionary["id"] as! String)!
+            let imgURL = jsonDictionary["img"] as! String
+            let user = User(fullname: fullname, email: email, password: password, id:id, imgURL: imgURL, img: nil)
+            
             users.add(user)
             
         }
@@ -90,7 +92,6 @@ class UserManager: NSObject, URLSessionDataDelegate {
         
         
     }
-    
     
 }
 
