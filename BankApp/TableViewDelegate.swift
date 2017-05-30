@@ -181,7 +181,7 @@ class TableViewDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, H
     func cellForEmptyGoal(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell", for: indexPath) as! GoalCell
         
-        cell.sumLabel.text = "\(deposits[indexPath.row].initialSum)"
+        cell.sumLabel.text = "\(deposits[indexPath.row].initialSum) Р"
         cell.termLabel.text = "\(deposits[indexPath.row].date) г."
         
         

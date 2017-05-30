@@ -17,7 +17,7 @@ class HomeTableData:NSObject, URLSessionDataDelegate
 {
     static let instance = HomeTableData()
     
-    let sections = ["Карты","Вклады и счета","Цели"]
+    let sections = ["Карты","Открыть вклад","Вклады"]
     weak var delegate: HomeTableDataDelegate!
     var data: NSMutableData!
     var urlPath:String!
