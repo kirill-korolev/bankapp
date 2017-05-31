@@ -100,8 +100,13 @@ class AuthWireframe: UIViewController, UserDelegate, ImageSessionDelegate {
     //MARK: UserDelegate
     
     func usersDownloaded(users: NSArray) {
-        self.users = users as! [User]
-        ImageManager.instance.downloadImage(urlString: self.users[0].imgURL!)
+        if users.count > 0{
+            self.users = users as! [User]
+            ImageManager.instance.downloadImage(urlString: self.users[0].imgURL!)
+        }
+        else{
+            showError(title: "Ошибка", text: "Вы ввели неверные данные")
+        }
     }
     
     //MARK: - ImageSessionDelegate

@@ -48,7 +48,6 @@
 		ED465EC81ED7479300765971 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465EC71ED7479300765971 /* Service.swift */; };
 		ED465ECA1ED7513500765971 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465EC91ED7513500765971 /* UploadManager.swift */; };
 		ED465ECC1ED76E0F00765971 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465ECB1ED76E0F00765971 /* SettingsManager.swift */; };
-		ED465ECE1ED772C800765971 /* Aim.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465ECD1ED772C800765971 /* Aim.swift */; };
 		ED465ED01ED772E600765971 /* Deposit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465ECF1ED772E600765971 /* Deposit.swift */; };
 		ED465ED21ED773B200765971 /* DepositManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465ED11ED773B200765971 /* DepositManager.swift */; };
 		ED465ED41ED7791400765971 /* DepositLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED465ED31ED7791400765971 /* DepositLoader.swift */; };
@@ -124,7 +123,6 @@
 		ED465EC71ED7479300765971 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		ED465EC91ED7513500765971 /* UploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
 		ED465ECB1ED76E0F00765971 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
-		ED465ECD1ED772C800765971 /* Aim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aim.swift; sourceTree = "<group>"; };
 		ED465ECF1ED772E600765971 /* Deposit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deposit.swift; sourceTree = "<group>"; };
 		ED465ED11ED773B200765971 /* DepositManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositManager.swift; sourceTree = "<group>"; };
 		ED465ED31ED7791400765971 /* DepositLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositLoader.swift; sourceTree = "<group>"; };
@@ -405,7 +403,6 @@
 				ED6006DD1E4AF6A400B5E096 /* Card.swift */,
 				ED465EA61ED3713400765971 /* Operation.swift */,
 				ED465EC71ED7479300765971 /* Service.swift */,
-				ED465ECD1ED772C800765971 /* Aim.swift */,
 				ED465ECF1ED772E600765971 /* Deposit.swift */,
 			);
 			name = Entities;
@@ -551,7 +548,6 @@
 				ED465EC21ED71AD800765971 /* SelfTransferWireframe.swift in Sources */,
 				ED465EAB1ED479BC00765971 /* Reachability.swift in Sources */,
 				ED2973DE1E48D958000C6E39 /* BankApp.xcdatamodeld in Sources */,
-				ED465ECE1ED772C800765971 /* Aim.swift in Sources */,
 				ED6006D11E4A19F100B5E096 /* HistoryRouter.swift in Sources */,
 				ED2973D61E48D958000C6E39 /* AppDelegate.swift in Sources */,
 				ED465EC81ED7479300765971 /* Service.swift in Sources */,
